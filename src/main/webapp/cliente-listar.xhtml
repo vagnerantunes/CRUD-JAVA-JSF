@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:metadata>
+	<f:viewAction action="#{categoriaBean.listar()}" />
+</f:metadata>
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Clientes</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:dataTable emptyMessage="Nenhum registro encontrado" value="#{clienteBean.clientes}" 
+		var="cliente" paginator="true" rows="10">
+		<f:facet name="header">
+				Listagem de Clientes				
+				<p:button value="Novo" outcome="cliente-novo.xhtml"/>
+			</f:facet>
+			
+			<p:column headerText="Código">
+				#{cliente.codigo}
+			</p:column>
+			
+			<p:column>
+				#{cliente.nome}
+			</p:column>
+			
+			<p:column>
+				#{cliente.cpf}
+			</p:column>
+			<p:column headerText="Opções">
+				<p:button value="Excluir" outcome="cliente-excluir.xhtml">
+					<f:param name="codigo" value="#{cliente.codigo}" />
+				</p:button>
+
+				<p:button value="Editar">
+				</p:button>		
+			</p:column>						
+		</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>

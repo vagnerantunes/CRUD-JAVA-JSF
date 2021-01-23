@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+	<f:viewParam name="codigo" value="#{funcionarioBean.codigo}"/>
+	<f:viewAction action="#{funcionarioBean.selecionar()}" />
+</f:metadata>
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Funcionario</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:panel header="Funcionario - Remover">
+			<p:messages id="mensagem" closable="true" />
+
+			<h:panelGrid id="painel" columns="2">
+				<p:outputLabel value="Código " />
+				<p:inputText value="#{funcionarioBean.funcionario.codigo}"
+					disabled="true" />
+
+				<p:outputLabel value="Nome " />
+				<p:inputText value="#{funcionarioBean.funcionario.nome}" disabled="true" />
+				
+				<p:outputLabel value="CPF " />
+				<p:inputText value="#{funcionarioBean.funcionario.cpf}" disabled="true" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Remover"
+					actionListener="#{funcionarioBean.excluir()}" update="mensagem painel" />
+				<p:commandButton value="Voltar" />
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>
